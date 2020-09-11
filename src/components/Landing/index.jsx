@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import Btn from './Btn';
+import { Link } from 'react-router-dom';
 
 const Landing = () => {
 
@@ -12,12 +12,28 @@ const Landing = () => {
         setTimeout(() => {
             refWolverine.current.classList.remove("startingImg")
             setBtn(true);
-        }, 3000);
+        }, 1000);
     }, []);
+
+    const setLeftImg = () => refWolverine.current.classList.add("leftImg");
+    const setRightImg = () => refWolverine.current.classList.add("rightImg");
+    const clearImg = () => {
+        refWolverine.current.classList.remove("leftImg");
+        refWolverine.current.classList.remove("rightImg");
+    }
 
     return (
         <main ref={refWolverine} className="welcomePage">
-            {btn && <Btn />}
+            {btn && 
+                <>
+                    <div onMouseOver={setLeftImg} onMouseOut={clearImg} className="leftBox">
+                        <Link to="/signup" className="btn-welcome">Inscription</Link>
+                    </div>
+                    <div onMouseOver={setRightImg} onMouseOut={clearImg} className="rightBox">
+                        <Link to="login" className="btn-welcome">Connexion</Link>
+                    </div>  
+                </>
+            }
         </main>
     )
 }
