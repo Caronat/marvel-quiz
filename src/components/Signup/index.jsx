@@ -8,29 +8,29 @@ const Signup = (props) => {
 
     const data = {pseudo: '', email: '', password: '', confirmPassword: ''}
 
-    const [loginData, setLoginData] = useState(data);
+    const [signupData, setSignupData] = useState(data);
     const [error, setError] = useState('');
 
     const handleChange = e => {
-        setLoginData({...loginData, [e.target.id]: e.target.value});
+        setSignupData({...signupData, [e.target.id]: e.target.value});
     }
 
-    const validLoginData = () => {
-        const {pseudo, email, password, confirmPassword} = loginData;
+    const validSignupData = () => {
+        const {pseudo, email, password, confirmPassword} = signupData;
         return (pseudo !== '' && email !== '' && password !== '' && password === confirmPassword);
     }
 
     const handleSubmit = e => {
         e.preventDefault();
-        const { email, password} = loginData;
+        const { email, password} = signupData;
         firebase.signupUser(email, password)
             .then(user => {
-                setLoginData({...data});
+                setSignupData({...data});
                 props.history.push('/welcome');
             })
-            .catch(err => {
-                setError(err);
-                setLoginData({...data});
+            .catch(error => {
+                setError(error);
+                setSignupData({...data});
             })
     }
 
@@ -45,32 +45,33 @@ const Signup = (props) => {
                 </div>
                 <div className="formBoxRight">
                     <div className="formContent">
-                        {errorMsg}
 
                         <h2>Inscription</h2>
 
                         <form onSubmit={handleSubmit}>
                             <div className="inputBox">
-                                <input onChange={handleChange} value={loginData.pseudo} type="text" id="pseudo" autoComplete="off" required />
+                                <input onChange={handleChange} value={signupData.pseudo} type="text" id="pseudo" autoComplete="off" required />
                                 <label htmlFor="pseudo">Pseudo</label>
                             </div>
 
                             <div className="inputBox">
-                                <input onChange={handleChange} value={loginData.email} type="email" id="email" autoComplete="off" required />
+                                <input onChange={handleChange} value={signupData.email} type="email" id="email" autoComplete="off" required />
                                 <label htmlFor="email">Email</label>
                             </div>
 
                             <div className="inputBox">
-                                <input onChange={handleChange} value={loginData.password} type="password" id="password" required />
+                                <input onChange={handleChange} value={signupData.password} type="password" id="password" required />
                                 <label htmlFor="password">Mot de passe</label>
                             </div>
 
                             <div className="inputBox">
-                                <input onChange={handleChange} value={loginData.confirmPassword} type="password" id="confirmPassword" required />
+                                <input onChange={handleChange} value={signupData.confirmPassword} type="password" id="confirmPassword" required />
                                 <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
                             </div>
 
-                            {validLoginData() ? <button>Inscription</button> : <button disabled>Inscription</button>}
+                            {errorMsg}
+                            
+                            {validSignupData() && <button>Inscription</button>}
                         </form>
 
                         <div className="linkContainer">
