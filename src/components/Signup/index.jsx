@@ -34,9 +34,6 @@ const Signup = (props) => {
             })
     }
 
-    // gestion erreurs
-    const errorMsg = error !== '' && <span>{error.message}</span>
-
     return (
         <div className="signUpLoginBox">
             <div className="slContainer">
@@ -69,9 +66,13 @@ const Signup = (props) => {
                                 <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
                             </div>
 
-                            {errorMsg}
+                            {error !== '' &&
+                                <span>{error.message}</span>
+                            }                            
                             
-                            {validSignupData() && <button>Inscription</button>}
+                            {validSignupData() &&
+                                <button>Inscription</button>
+                            }
                         </form>
 
                         <div className="linkContainer">

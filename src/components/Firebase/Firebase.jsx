@@ -27,8 +27,11 @@ class Firebase {
 
     // Deconnexion
     logoutUser = () =>
-        this.auth.signOut(); 
-    
+        this.auth.signOut();
+
+    // Recupere MDP
+    passwordReset = email =>  
+        this.auth.sendPasswordResetEmail(email);
 }
 
 export default Firebase;
