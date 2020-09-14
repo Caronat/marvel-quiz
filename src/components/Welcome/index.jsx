@@ -15,7 +15,6 @@ const Welcome = (props) => {
             user ? setUserSession(user) : props.history.push('/');
         })
 
-
         if (!!userSession) {
             firebase.user(userSession.uid)
                 .get()
