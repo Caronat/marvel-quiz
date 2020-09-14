@@ -22,9 +22,15 @@ const Signup = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        const { email, password} = signupData;
+        const { email, password, pseudo } = signupData;
         firebase.signupUser(email, password)
-            .then(user => {
+            .then( authUser => {
+                return firebase.user(authUser.user.uid).set({
+                    pseudo,
+                    email
+                })
+            })
+            .then( () => {
                 setSignupData({...data});
                 props.history.push('/welcome');
             })
@@ -71,7 +77,7 @@ const Signup = (props) => {
                             }                            
                             
                             {validSignupData() &&
-                                <button>Inscription</button>
+                                <button className="btnSubmit">Inscription</button>
                             }
                         </form>
 

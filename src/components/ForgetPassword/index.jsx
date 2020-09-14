@@ -61,7 +61,7 @@ const ForgetPassword = (props) => {
                             {error && <span>{error.message}</span>}
 
                             {(email !== '') && 
-                                <button>Récupérer</button>
+                                <button className="btnSubmit">Récupérer</button>
                             }
                         </form>
 

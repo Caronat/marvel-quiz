@@ -52,7 +52,7 @@ const Login = (props) => {
 
                             {error !== '' && <span>{error.message}</span>}
 
-                            {displayBtn && <button>Connexion</button>}
+                            {displayBtn && <button className="btnSubmit">Connexion</button>}
                         </form>
 
                         <div className="linkContainer">
