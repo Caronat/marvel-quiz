@@ -2,7 +2,7 @@ export const QuizMarvel = [
     {
         fournisseur: "Donkey Geek (https://www.youtube.com/c/DonkeyGeek)",
         sujet: "Application Marvel Quiz pour apprentissage React JS",
-        quizz: {
+        quiz: {
             debutant: [
                 {
                     id: 0,
@@ -125,7 +125,7 @@ export const QuizMarvel = [
                     heroId: 1009662
                 }
             ],
-            "confirme": [
+            confirme: [
                 {
                     id: 0,
                     question: "Qui est Logan dans la bande dessinée de Marvel Comics 'X-Men' ?",
@@ -247,7 +247,7 @@ export const QuizMarvel = [
                     heroId: 1009281
                 }
             ],
-            "expert": [
+            expert: [
                 {
                     id: 0,
                     question: "Quand elle a travaillé pour Hydra, la première mission de Spider-Woman était de...",
