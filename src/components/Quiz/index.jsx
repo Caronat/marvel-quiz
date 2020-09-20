@@ -11,7 +11,7 @@ toast.configure();
 
 const initialState = {
   quizLevel: 0,
-  maxQuestions: 10,
+  maxQuestions: 2,
   storedQuestions: [],
   question: null,
   options: [],
