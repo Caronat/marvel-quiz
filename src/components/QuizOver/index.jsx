@@ -215,7 +215,7 @@ const QuizOver = React.forwardRef((props, ref) => {
         <table className="answers">
           <thead>
             <tr>
-              <th>Qestion</th>
+              <th>Question</th>
               <th>Réponse</th>
               <th>Info</th>
             </tr>
